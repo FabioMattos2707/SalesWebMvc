@@ -5,20 +5,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using SalesWebMvc.Models;
 using SalesWebMvc.Data;
+using SalesWebMvc.Services;
+
 
 namespace SalesWebMvc.Controllers
 {
     public class SellersController : Controller
     {
-        private SalesWebMvcContext _context;
-        public SellersController(SalesWebMvcContext context)
+        private readonly SellerService _sellerService;
+
+        public SellersController(SellerService sellerService)
         {
-            _context = context;
+            _sellerService = sellerService;
         }
+
         public IActionResult Index()
         {
-            
-            return View(_context.Seller.ToList());
+            var list = _sellerService.FindAll();
+            return View(list);
         }
     }
 }
