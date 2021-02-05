@@ -20,5 +20,15 @@ namespace SalesWebMvc.Services
         {
             return _context.Seller.ToList();
         }
+
+        public void Insert(Seller obj)
+        {
+            if (obj.Name == null)
+            {
+                throw new NullReferenceException("O campo nome está vazio!");
+            }
+            _context.Add(obj);
+            _context.SaveChanges();
+        }
     }
 }

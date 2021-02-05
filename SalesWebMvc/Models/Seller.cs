@@ -8,11 +8,11 @@ namespace SalesWebMvc.Models
 {
     public class Seller
     {
-        public int Id { get; protected set; }
-        public string Name { get; protected set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
         public string Email { get; set; }
-        public DateTime BirthDate { get; protected set; }
-        public double Salary { get; protected set; }
+        public DateTime BirthDate { get; set; }
+        public double Salary { get; set; }
         public Department Department { get; set; }
         public ICollection<SalesRecord> SalesRecords { get; set; } = new List<SalesRecord>();
 
