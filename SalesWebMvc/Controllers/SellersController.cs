@@ -114,21 +114,22 @@ namespace SalesWebMvc.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Seller obj)
+        public async Task<IActionResult> Edit(int id, Seller seller)
         {
             if (!ModelState.IsValid)
             {
-                var departments = await  _departmentService.FindAllAsync();
-                var ViewModel = new SellerFormViewModel { Seller = obj, Departments = departments };
+                var departments = await _departmentService.FindAllAsync();
+                var ViewModel = new SellerFormViewModel { Seller = seller, Departments = departments };
                 return View(ViewModel);
             }
-            if (id != obj.Id)
+
+            if (id != seller.Id)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id not found!" });
             }
             try
             {
-                await _sellerService.UpdateAsync(obj);
+                await _sellerService.UpdateAsync(seller);
                 return RedirectToAction(nameof(Index));
             }
             catch (NotFoundException e)

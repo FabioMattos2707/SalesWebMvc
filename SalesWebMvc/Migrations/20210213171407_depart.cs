@@ -22,7 +22,7 @@ namespace SalesWebMvc.Migrations
                 column: "DepartmentId",
                 principalTable: "Department",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict); //Restrict
+                onDelete: ReferentialAction.Restrict); 
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
